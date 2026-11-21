@@ -6,6 +6,8 @@ Adds a **packed 4-lane int8 dot-product** custom instruction (`qdot`) to the
 RV32I core - the central primitive of quantized neural-network inference
 (convolution inner products with int8 activations and weights).
 
+![Architecture](docs/diagrams/architecture.svg)
+
 ## The instruction
 
 | mnemonic              | encoding                               | semantics |
@@ -69,13 +71,18 @@ run_sim.sh / Makefile    one-command flow
 ./run_sim.sh
 ```
 
-
 ## Next (FPGA host)
 
 - Quantize a tiny classifier / ViT-tiny to int8 and drive full inference
   through the qdot TCA; co-simulate software + RTL on M1.
 - Build the soft-SoC (core + qdot accelerator) for the FPGA host for
   measured per-inference latency vs. the software baseline.
+
+## Test run
+
+Output of the CI command (`./run_sim.sh`), captured from a local run:
+
+![Test run](docs/screenshots/test_run.svg)
 
 ## Setup
 
